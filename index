@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Angler Guide — Home</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;padding:0">
+      <div class="logo">ANGLER GUIDE</div>
+      <nav id="top-nav">
+        <a href="index.html">Home</a>
+        <a href="species.html">Species</a>
+        <a href="tips.html">Tips</a>
+        <a href="regulations.html">Regulations</a>
+        <a href="gear.html">Gear</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero section-block" aria-label="Home">
+      <div class="left">
+        <h1>Fishing Info for Every Angler</h1>
+        <p>Local regulations, seasonal tips, species guides, and gear checklists to help you fish responsibly and confidently.</p>
+        <a class="btn" href="regulations.html">View Regulations</a>
+
+        <div class="facts">
+          <div class="fact"><strong>Best Season</strong><br>Spring to early fall</div>
+          <div class="fact"><strong>Popular Species</strong><br>Bass; Catfish; Trout</div>
+          <div class="fact"><strong>Safety Tip</strong><br>Always wear a life jacket</div>
+        </div>
+
+        <img class="hero-image" src="https://hellscanyon.tours/wp-content/uploads/2023/01/RiverAdventuresInc-214207-Pieces-Fishing-Equipment-blogbanner1.jpg" alt="Fishing photo">
+      </div>
+
+      <div style="min-width:220px;align-self:flex-start">
+        <div style="background:#659B80;color:#ffffff;padding:16px;border-radius:8px;text-align:center">
+          Quick Links
+          <div style="margin-top:8px;font-weight:600">Species · Tips · Gear · Regulations</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="main">
+      <article class="content">
+        <h2>Welcome</h2>
+        <p>This site helps anglers find quick, practical information. Use the navigation to visit each topic page for more details.</p>
+      </article>
+
+      <aside class="sidebar">
+        <h2>Quick FAQ</h2>
+        <p><strong>Do I need a license?</strong> In most places yes; check your state or local authority.</p>
+        <p><strong>When is the best time to fish?</strong> Early morning and late afternoon are often productive.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© 2026 Angler Guide</div>
+      <div style="opacity:0.9">Privacy · Terms · Resources</div>
+    </div>
+  </footer>
+
+<script>
+  // mark active nav link
+  const nav = document.querySelectorAll('nav a');
+  nav.forEach(a => {
+    if (a.getAttribute('href') === location.pathname.split('/').pop() || (location.pathname.endsWith('/') && a.getAttribute('href') === 'index.html')) {
+      a.classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>
+
