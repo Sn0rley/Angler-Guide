@@ -39,5 +39,17 @@
       <div style="opacity:0.9">Privacy · Terms · Resources</div>
     </div>
   </footer>
+
+  <script>
+  const navLinks = document.querySelectorAll('nav a');
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
+</script>
+  
 </body>
 </html>
