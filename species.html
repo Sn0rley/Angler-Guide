@@ -5,6 +5,99 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Angler Guide — Species</title>
 <link rel="stylesheet" href="styles.css">
+
+<!-- Page-specific styles to organize layout and add the intro tile -->
+<style>
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
+
+  /* Intro tile directly under the header */
+
+  .intro-tile {
+    margin: 18px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(33,51,42,0.08);
+    width: 100%;
+    height: clamp(320px, 36vh, 640px); /* min, fluid, max */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-tile__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.98) contrast(0.98) brightness(0.9);
+    transform-origin: center;
+  }
+
+  .intro-tile__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.18));
+  }
+
+  .intro-tile__label {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    letter-spacing: 0.6px;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.45);
+    padding: 10px 18px;
+    background: rgba(0,0,0,0.18);
+    border-radius: 6px;
+  }
+
+  /* Slightly tighter label on very small screens */
+  @media (max-width: 420px) {
+    .intro-tile { height: clamp(260px, 40vh, 420px); }
+    .intro-tile__label { font-size: 1.4rem; padding: 8px 12px; }
+  }
+  /* Main content layout */
+  main.wrap { display: grid; grid-template-columns: 1fr; gap: 18px; }
+
+  .section-block {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(33,51,42,0.04);
+  }
+
+  /* Species list styling */
+  .species-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+  .species-item {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 18px;
+    align-items: center;
+  }
+  .species-item__text { font-size: 1rem; color: #21332A; }
+  .species-item__text strong { font-size: 1.05rem; color: #163a2b; }
+
+  .species-item__img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+    justify-self: end;
+  }
+  .species-item__img img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+  /* Responsive adjustments */
+  @media (max-width: 820px) {
+    .species-item { grid-template-columns: 1fr; }
+    .species-item__img { justify-self: center; max-width: 100%; }
+    .intro-tile { min-height: 140px; }
+    .intro-tile__label { font-size: 1.35rem; }
+  }
+</style>
 </head>
 <body>
   <header>
@@ -22,43 +115,63 @@
   </header>
 
   <main class="wrap">
-    <section class="section-block">
-  <li style="margin-bottom:20px">
-    <strong>Largemouth Bass</strong> — Preferred habitats: weedy shorelines and structure.
-    <br>
-    <img 
-      src="https://bassforecast-website.s3.amazonaws.com/production/public/assets/blog/bassforecast-shutterstock_1124052620.jpeg" 
-      alt="Largemouth Bass"
-      style="max-width:350px;width:100%;border-radius:8px;margin-top:8px">
-  </li>
+    <!-- Intro tile placed directly below the header; "Species" centered and bold on the image -->
+    <div class="intro-tile" role="img" aria-label="Intro image for Species page showing a largemouth bass with overlay text Species">
+      <div class="intro-tile__bg" style="background-image: url('https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg');"></div>
+      <div class="intro-tile__overlay" aria-hidden="true"></div>
+      <div class="intro-tile__label">Species</div>
+    </div>
 
-  <li style="margin-bottom:20px">
-    <strong>Channel Catfish</strong> — Active at dusk and night; bait anglers often succeed.
-    <br>
-    <img 
-      src="https://content.osgnetworks.tv/photopacks/how-to-target-channel-catfish-during-spring-run-off_526050/526054_gaf-lead-channel-cat_hero_1200x800.jpg" 
-      alt="Channel Catfish"
-      style="max-width:350px;width:100%;border-radius:8px;margin-top:8px">
-  </li>
+    <!-- Organized species section -->
+    <section class="section-block" aria-labelledby="species-heading">
+      <h2 id="species-heading" style="margin-top:0; color:#163a2b;">Species Overview</h2>
 
-  <li style="margin-bottom:20px">
-    <strong>Rainbow Trout</strong> — Cold-water streams and stocked lakes; use light tackle.
-    <br>
-    <img 
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0QSVmMZlmK1Sg-L_pIyfne-UlYILFpS2WKQ&s" 
-      alt="Rainbow Trout"
-      style="max-width:350px;width:100%;border-radius:8px;margin-top:8px">
-  </li>
+      <ul class="species-list">
+        <li class="species-item">
+          <div class="species-item__text">
+            <strong>Largemouth Bass</strong> — Preferred habitats: weedy shorelines and structure. Largemouth bass are ambush predators that favor cover; try fishing near submerged logs, weed edges, and docks during low-light periods.
+          </div>
+          <div class="species-item__img">
+            <img 
+              src="https://bassforecast-website.s3.amazonaws.com/production/public/assets/blog/bassforecast-shutterstock_1124052620.jpeg" 
+              alt="Largemouth Bass">
+          </div>
+        </li>
 
-  <li style="margin-bottom:20px">
-    <strong>Bluegill</strong> — Shallow weedy bays; great for beginners and kids.
-    <br>
-    <img 
-      src="https://personalhandcrafteddisplays.com/cdn/shop/articles/b00c38507ee68d4586c3ce787d44215c_1200x1200.jpg?v=1617893303" 
-      alt="Bluegill"
-      style="max-width:350px;width:100%;border-radius:8px;margin-top:8px">
-  </li>
-  </section>
+        <li class="species-item">
+          <div class="species-item__text">
+            <strong>Channel Catfish</strong> — Active at dusk and night; bait anglers often succeed. Channel catfish feed heavily after dark and respond well to stink baits, cut bait, and prepared dough baits.
+          </div>
+          <div class="species-item__img">
+            <img 
+              src="https://content.osgnetworks.tv/photopacks/how-to-target-channel-catfish-during-spring-run-off_526050/526054_gaf-lead-channel-cat_hero_1200x800.jpg" 
+              alt="Channel Catfish">
+          </div>
+        </li>
+
+        <li class="species-item">
+          <div class="species-item__text">
+            <strong>Rainbow Trout</strong> — Cold-water streams and stocked lakes; use light tackle. Trout prefer cooler, well-oxygenated water and often take small spinners, flies, or natural baits.
+          </div>
+          <div class="species-item__img">
+            <img 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0QSVmMZlmK1Sg-L_pIyfne-UlYILFpS2WKQ&s" 
+              alt="Rainbow Trout">
+          </div>
+        </li>
+
+        <li class="species-item">
+          <div class="species-item__text">
+            <strong>Bluegill</strong> — Shallow weedy bays; great for beginners and kids. Bluegill are eager biters on small jigs, live worms, and bread, making them ideal for family outings.
+          </div>
+          <div class="species-item__img">
+            <img 
+              src="https://personalhandcrafteddisplays.com/cdn/shop/articles/b00c38507ee68d4586c3ce787d44215c_1200x1200.jpg?v=1617893303" 
+              alt="Bluegill">
+          </div>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <footer>
@@ -77,8 +190,6 @@
       link.classList.add('active');
     }
   });
-</script>
-  
+  </script>
 </body>
 </html>
-
