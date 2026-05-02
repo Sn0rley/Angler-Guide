@@ -5,6 +5,113 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Angler Guide — Gear</title>
 <link rel="stylesheet" href="styles.css">
+
+<!-- Page-specific styles to add the intro tile and two-column list layout (keeps header/body structure unchanged) -->
+<style>
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
+
+  /* Intro tile directly under the header (fluid clamp scaling) */
+  .intro-tile {
+    margin: 18px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(33,51,42,0.08);
+    width: 100%;
+    height: clamp(320px, 36vh, 640px); /* min, fluid, max */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-tile__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.98) contrast(0.98) brightness(0.9);
+    transform-origin: center;
+  }
+
+  .intro-tile__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.18));
+  }
+
+  .intro-tile__label {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    letter-spacing: 0.6px;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.45);
+    padding: 10px 18px;
+    background: rgba(0,0,0,0.18);
+    border-radius: 6px;
+  }
+
+  @media (max-width: 420px) {
+    .intro-tile { height: clamp(260px, 40vh, 420px); }
+    .intro-tile__label { font-size: 1.4rem; padding: 8px 12px; }
+  }
+
+  /* Section styling */
+  .section-block {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(33,51,42,0.04);
+  }
+
+  /* Two-column list layout (text left, image right) */
+  .two-col-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+  .two-col-item {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 18px;
+    align-items: start;
+  }
+
+  /* Keep original bullet appearance by adding a subtle left marker */
+  .two-col-item::marker { content: none; }
+  .two-col-item .bullet {
+    position: relative;
+    padding-left: 18px;
+  }
+  .two-col-item .bullet::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #163a2b;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .two-col-item__text { font-size: 1rem; color: #21332A; }
+  .two-col-item__text strong { font-size: 1.05rem; color: #163a2b; }
+
+  .two-col-item__img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+    justify-self: end;
+    text-align: center;
+  }
+  .two-col-item__img img { width: 200px; height: auto; display: block; margin: 0 auto 8px auto; border-radius: 6px; }
+  .two-col-item__img p { margin: 0; font-size: 12px; color: #21332A; }
+
+  /* Responsive adjustments */
+  @media (max-width: 820px) {
+    .two-col-item { grid-template-columns: 1fr; }
+    .two-col-item__img { justify-self: center; max-width: 100%; }
+    .two-col-item .bullet::before { top: 0.15rem; }
+  }
+</style>
 </head>
 <body>
   <header>
@@ -21,54 +128,68 @@
     </div>
   </header>
 
+  <!-- Intro tile placed directly below the header; "Gear" centered and bold on the image -->
+  <div class="wrap">
+    <div class="intro-tile" role="img" aria-label="Intro image for Gear page with overlay text Gear">
+      <div class="intro-tile__bg" style="background-image: url('https://www.lawrencebay.com/wp-content/uploads/2022/02/Fishing_Equipment.jpg');"></div>
+      <div class="intro-tile__overlay" aria-hidden="true"></div>
+      <div class="intro-tile__label"><strong>Gear</strong></div>
+    </div>
+  </div>
+
   <main class="wrap">
     <section class="section-block">
       <h2>Gear Checklist</h2>
-      <ul>
-        <li>Rod and reel appropriate for target species (light, medium, heavy).</li>
-        <!-- Small Rods & Reels Image -->
-<div style="margin:10px 0 18px 0; padding:8px; border-radius:8px; max-width:260px;">
-  <img 
-    src="https://bloximages.newyork1.vip.townnews.com/norfolkdailynews.com/content/tncms/assets/v3/editorial/2/d6/2d6dc1ec-e6fc-11ea-a9ee-b30587b85529/5f4550d8d9299.image.jpg?resize=400%2C364"
-    alt="Assortment of rods and reels"
-    style="width:200px; height:auto; border-radius:6px; display:block; margin:0 auto 6px auto;">
-  <p style="font-size:12px; margin:0; text-align:center; color:#21332A;">
-    An assortment of different rods and reels
-  </p>
-</div>
-        <li>Assortment of hooks, weights, lures, and spare line.</li>
-        <!-- Small Tackle Box Image -->
-<div style="margin:10px 0 18px 0; padding:8px; border-radius:8px; max-width:260px;">
-  <img 
-    src="https://i.ebayimg.com/images/g/hNkAAOSw84ZiQKhg/s-l400.jpg"
-    alt="Simple freshwater tackle box"
-    style="width:200px; height:auto; border-radius:6px; display:block; margin:0 auto 6px auto;">
-  <p style="font-size:12px; margin:0; text-align:center; color:#21332A;">
-    A simple freshwater tackle box
-  </p>
-</div>
-        <li>Life jacket, first-aid kit, sun protection, and drinking water.</li>
-        <!-- Small First Aid Kit Image -->
-<div style="margin:10px 0 18px 0; padding:8px; border-radius:8px; max-width:260px;">
-  <img 
-    src="https://pics.walgreens.com/prodimg/652646/450.jpg"
-    alt="Emergency first aid kit"
-    style="width:200px; height:auto; border-radius:6px; display:block; margin:0 auto 6px auto;">
-  <p style="font-size:12px; margin:0; text-align:center; color:#21332A;">
-    In case of any emergencies and accidents
-  </p>
-</div>
-        <li>Net, pliers, measuring tape, and a small cooler or livewell if keeping fish.</li>
-        <!-- Small Pliers Image -->
-<div style="margin:10px 0 18px 0; padding:8px; border-radius:8px; max-width:260px;">
-  <img 
-    src="https://toadfish.com/cdn/shop/files/Titanium_Pliers-11_web.jpg?v=1746200111&width=1000"
-    alt="Fishing pliers"
-    style="width:200px; height:auto; border-radius:6px; display:block; margin:0 auto 6px auto;">
-  <p style="font-size:12px; margin:0; text-align:center; color:#21332A;">
-    Pliers help get hooks out of the fish's mouth
-  </p>
-</div>
+
+      <!-- Two-column list: left = original bullet text (unchanged), right = corresponding image + caption -->
+      <ul class="two-col-list">
+        <li class="two-col-item">
+          <div class="two-col-item__text bullet">
+            Rod and reel appropriate for target species (light, medium, heavy).
+          </div>
+          <div class="two-col-item__img">
+            <img 
+              src="https://bloximages.newyork1.vip.townnews.com/norfolkdailynews.com/content/tncms/assets/v3/editorial/2/d6/2d6dc1ec-e6fc-11ea-a9ee-b30587b85529/5f4550d8d9299.image.jpg?resize=400%2C364"
+              alt="Assortment of rods and reels">
+            <p>An assortment of different rods and reels</p>
+          </div>
+        </li>
+
+        <li class="two-col-item">
+          <div class="two-col-item__text bullet">
+            Assortment of hooks, weights, lures, and spare line.
+          </div>
+          <div class="two-col-item__img">
+            <img 
+              src="https://i.ebayimg.com/images/g/hNkAAOSw84ZiQKhg/s-l400.jpg"
+              alt="Simple freshwater tackle box">
+            <p>A simple freshwater tackle box</p>
+          </div>
+        </li>
+
+        <li class="two-col-item">
+          <div class="two-col-item__text bullet">
+            Life jacket, first-aid kit, sun protection, and drinking water.
+          </div>
+          <div class="two-col-item__img">
+            <img 
+              src="https://pics.walgreens.com/prodimg/652646/450.jpg"
+              alt="Emergency first aid kit">
+            <p>In case of any emergencies and accidents</p>
+          </div>
+        </li>
+
+        <li class="two-col-item">
+          <div class="two-col-item__text bullet">
+            Net, pliers, measuring tape, and a small cooler or livewell if keeping fish.
+          </div>
+          <div class="two-col-item__img">
+            <img 
+              src="https://toadfish.com/cdn/shop/files/Titanium_Pliers-11_web.jpg?v=1746200111&width=1000"
+              alt="Fishing pliers">
+            <p>Pliers help get hooks out of the fish's mouth</p>
+          </div>
+        </li>
       </ul>
     </section>
   </main>
@@ -89,7 +210,6 @@
       link.classList.add('active');
     }
   });
-</script>
-  
+  </script>
 </body>
 </html>
