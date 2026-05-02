@@ -5,6 +5,113 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Angler Guide — Regulations</title>
 <link rel="stylesheet" href="styles.css">
+
+<!-- Page-specific styles to add the intro tile and two-column list layout (keeps header/body structure unchanged) -->
+<style>
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
+
+  /* Intro tile directly under the header (fluid clamp scaling) */
+  .intro-tile {
+    margin: 18px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(33,51,42,0.08);
+    width: 100%;
+    height: clamp(320px, 36vh, 640px); /* min, fluid, max */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-tile__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.98) contrast(0.98) brightness(0.9);
+    transform-origin: center;
+  }
+
+  .intro-tile__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.18));
+  }
+
+  .intro-tile__label {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    letter-spacing: 0.6px;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.45);
+    padding: 10px 18px;
+    background: rgba(0,0,0,0.18);
+    border-radius: 6px;
+  }
+
+  @media (max-width: 420px) {
+    .intro-tile { height: clamp(260px, 40vh, 420px); }
+    .intro-tile__label { font-size: 1.4rem; padding: 8px 12px; }
+  }
+
+  /* Section styling */
+  .section-block {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(33,51,42,0.04);
+  }
+
+  /* Two-column list layout (text left, image right) */
+  .two-col-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+  .two-col-item {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 18px;
+    align-items: start;
+  }
+
+  /* Keep original bullet appearance by adding a subtle left marker */
+  .two-col-item::marker { content: none; }
+  .two-col-item .bullet {
+    position: relative;
+    padding-left: 18px;
+  }
+  .two-col-item .bullet::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #163a2b;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .two-col-item__text { font-size: 1rem; color: #21332A; }
+  .two-col-item__text strong { font-size: 1.05rem; color: #163a2b; }
+
+  .two-col-item__img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+    justify-self: end;
+    text-align: center;
+  }
+  .two-col-item__img img { width: 200px; height: auto; display: block; margin: 0 auto 8px auto; border-radius: 6px; }
+  .two-col-item__img p { margin: 0; font-size: 12px; color: #21332A; }
+
+  /* Responsive adjustments */
+  @media (max-width: 820px) {
+    .two-col-item { grid-template-columns: 1fr; }
+    .two-col-item__img { justify-self: center; max-width: 100%; }
+    .two-col-item .bullet::before { top: 0.15rem; }
+  }
+</style>
 </head>
 <body>
   <header>
@@ -21,40 +128,60 @@
     </div>
   </header>
 
+  <!-- Intro tile placed directly below the header; "Regulations" centered and bold on the image -->
+  <div class="wrap">
+    <div class="intro-tile" role="img" aria-label="Intro image for Regulations page with overlay text Regulations">
+      <div class="intro-tile__bg" style="background-image: url('https://img-cdn.inc.com/image/upload/f_webp,q_auto,c_fit/images/panoramic/GettyImages-1307047910_544356_y5hnll.jpg');"></div>
+      <div class="intro-tile__overlay" aria-hidden="true"></div>
+      <div class="intro-tile__label"><strong>Regulations</strong></div>
+    </div>
+  </div>
+
   <main class="wrap">
     <section class="section-block">
       <h2>Regulations Summary</h2>
       <p>Always verify local fishing regulations before you fish. Typical items to confirm:</p>
-      <ul>
-        <li>Licensing requirements and how to obtain a license in your state.</li>
-        <!-- Small License Example Image -->
-<div style="margin:10px 0 18px 0; padding:8px; border-radius:8px; max-width:260px;">
-  <img 
-    src="https://tpwd.texas.gov/regulations/outdoor-annual/licenses/lifetime-license-back-2024.png/@@images/0219c16c-a0d3-498e-a4bb-4c96a1ef4f16.png"
-    alt="Texas Fishing License Example"
-    style="width:200px; height:auto; border-radius:6px; display:block; margin:0 auto 6px auto;">
-  <p style="font-size:12px; margin:0; text-align:center; color:#21332A;">
-    Example of a State‑Issued Texas Fishing License
-  </p>
-</div>
-        <li>Season dates and size or bag limits for each species.</li>
-        <!-- Small Harvest Limit Image -->
-<div style="margin:10px 0 18px 0; padding:8px; border-radius:8px; max-width:260px;">
-  <img 
-    src="https://www.greatlakesnow.org/wp-content/uploads/2022/03/A-cooler-full-of-Lake-Erie-yellow-perch.-Photo-by-James-Proffitt.-scaled-1.jpg"
-    alt="Cooler of perch"
-    style="width:200px; height:auto; border-radius:6px; display:block; margin:0 auto;">
-</div>
-        <li>Restricted areas, special permits, and gear restrictions (e.g., bait bans).</li>
-        <!-- Small Trespassing Sign Image -->
-<div style="margin:10px 0 18px 0; padding:8px; border-radius:8px; max-width:260px;">
-  <img 
-    src="https://sirixmonitoring.com/wp-content/uploads/2024/09/No-trespassing-sign-on-wire-fence-with-lush-greenery-background-1024x768.jpg"
-    alt="No trespassing sign"
-    style="width:200px; height:auto; border-radius:6px; display:block; margin:0 auto;">
-</div>
+
+      <!-- Two-column list: left = original bullet text (unchanged), right = corresponding image + caption -->
+      <ul class="two-col-list">
+        <li class="two-col-item">
+          <div class="two-col-item__text bullet">
+            Licensing requirements and how to obtain a license in your state.
+          </div>
+          <div class="two-col-item__img">
+            <img 
+              src="https://tpwd.texas.gov/regulations/outdoor-annual/licenses/lifetime-license-back-2024.png/@@images/0219c16c-a0d3-498e-a4bb-4c96a1ef4f16.png"
+              alt="Texas Fishing License Example">
+            <p>Example of a State‑Issued Texas Fishing License</p>
+          </div>
+        </li>
+
+        <li class="two-col-item">
+          <div class="two-col-item__text bullet">
+            Season dates and size or bag limits for each species.
+          </div>
+          <div class="two-col-item__img">
+            <img 
+              src="https://www.greatlakesnow.org/wp-content/uploads/2022/03/A-cooler-full-of-Lake-Erie-yellow-perch.-Photo-by-James-Proffitt.-scaled-1.jpg"
+              alt="Cooler of perch">
+            <p>Example harvest / catch photo</p>
+          </div>
+        </li>
+
+        <li class="two-col-item">
+          <div class="two-col-item__text bullet">
+            Restricted areas, special permits, and gear restrictions (e.g., bait bans).
+          </div>
+          <div class="two-col-item__img">
+            <img 
+              src="https://sirixmonitoring.com/wp-content/uploads/2024/09/No-trespassing-sign-on-wire-fence-with-lush-greenery-background-1024x768.jpg"
+              alt="No trespassing sign">
+            <p>No trespassing / restricted area sign</p>
+          </div>
+        </li>
       </ul>
-      <p><strong>Quick action:</strong> Visit your state fish and wildlife website for the most current rules and emergency notices.</p>
+
+      <p style="margin-top:12px;"><strong>Quick action:</strong> Visit your state fish and wildlife website for the most current rules and emergency notices.</p>
     </section>
   </main>
 
@@ -74,7 +201,6 @@
       link.classList.add('active');
     }
   });
-</script>
-  
+  </script>
 </body>
 </html>
